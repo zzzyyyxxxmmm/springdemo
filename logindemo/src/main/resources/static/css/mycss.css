@@ -1,0 +1,41 @@
+.main{
+    background-color:lightgrey;
+}
+
+.login{
+    background-color: white;
+    margin: 50px;
+}
+div.sign-in-box{
+     width: 400px;
+     background: white;
+     padding: 40px 40px 33px 40px;
+     border-radius: 3px;
+     -webkit-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+     border: 1px solid #eeeeee;
+     margin: 30px auto;
+}
+
+div.sign-in-page{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    background-image: -o-radial-gradient(50% 135%, closest-side, #ffffff 50%, #eceff1 100%);
+    background-image: radial-gradient(closest-side at 50% 135%, #ffffff 50%, #eceff1 100%);
+
+}
+
+.login-text{
+    margin-top: 15px;
+    color: #bdbdbd;
+    pointer-events: none;
+    font-size: x-small;
+}
