@@ -1,6 +1,6 @@
-package com.example.hibernatedemo.dao;
+package com.example.springmvc.dao;
 
-import com.example.hibernatedemo.entity.Student;
+import com.example.springmvc.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StudentDao extends JpaRepository<Student, Integer> {
 
-    public Student findStudentById(Long id);
+    Student findStudentById(long id);
 }

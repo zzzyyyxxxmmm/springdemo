@@ -1,6 +1,7 @@
-package com.example.hibernatedemo.service;
+package com.example.springmvc.service;
 
-import com.example.hibernatedemo.entity.Course;
+
+import com.example.springmvc.entity.Course;
 
 import java.util.List;
 import java.util.Set;
@@ -12,5 +13,5 @@ public interface CourseService {
     List<Course> getAllCourses();
     void addCourse(Course course);
     Set<Course> getCoursesByStudentName(String name);
-    Course findCourseById(Long id);
+    Course findCourseById(int id);
 }

@@ -13,16 +13,16 @@ import java.util.Set;
 /**
  * @author jikangwang
  */
-@Entity
+@Entity(name = "CCourse")
 @Getter
 @Setter
 @ToString(exclude = "students")
 @NoArgsConstructor
-@Table
+@Table(name = "course")
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @NotNull
     private String name;
 

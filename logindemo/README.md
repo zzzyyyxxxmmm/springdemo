@@ -14,9 +14,10 @@ The OAuth 2.0 authorization framework enables third-party applications to obtain
 四种模式：
 1. Implicity 用于静态页面，没有后台交互，只有一个token，易泄漏，不能刷新
 2. authorization code 就是我们用的
-3. resource owner password credentials
-4. client credentials
+3. resource owner password credentials 企业内部产品互相
+4. client credentials 链式调用
 
+单点登录就是一次登录，可以使用内部所有资源
 
 [介绍](!http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
 

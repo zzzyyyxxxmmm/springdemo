@@ -16,14 +16,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class testCourse {
     @Autowired
     CourseService courseService;
+
     @Test
     public void addCourse(){
-        try {
-            courseService.addCourse(new Course(null));
-        } catch (Exception e){
-            System.out.println("");
-            //e.printStackTrace();
-        }
+        courseService.addCourse(new Course("wwwww"));
     }
 
     @Test
@@ -33,6 +29,6 @@ public class testCourse {
     
     @Test
     public void getCourseById(){
-        System.out.println(courseService.findCourseById(7).getName());
+        System.out.println(courseService.findCourseById(Long.valueOf(2)).getName());
     }
 }

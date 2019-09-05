@@ -1,7 +1,7 @@
-package com.example.hibernatedemo.service;
+package com.example.springmvc.service;
 
-import com.example.hibernatedemo.dao.CourseDao;
-import com.example.hibernatedemo.entity.Course;
+import com.example.springmvc.dao.CourseDao;
+import com.example.springmvc.entity.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +34,7 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public Course findCourseById(Long id) {
-        return courseDao.findCourse(id);
-        //return courseDao.findCourseById(id);
+    public Course findCourseById(int id) {
+        return courseDao.findCourseById(id);
     }
 }

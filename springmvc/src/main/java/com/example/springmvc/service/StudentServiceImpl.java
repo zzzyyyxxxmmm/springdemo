@@ -1,13 +1,11 @@
-package com.example.hibernatedemo.service;
+package com.example.springmvc.service;
 
-import com.example.hibernatedemo.dao.StudentDao;
-import com.example.hibernatedemo.entity.Student;
+import com.example.springmvc.dao.StudentDao;
+import com.example.springmvc.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -31,13 +29,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public List<Student> getAll() {
-        Iterable<Student> students = studentDao.findAll();
-        Iterator<Student> iter = students.iterator();
-        List<Student> res = new ArrayList<>();
-        while(iter.hasNext()) {
-            res.add(iter.next());
-        }
-        return res;
+        return studentDao.findAll();
     }
 
     @Override
@@ -48,9 +40,16 @@ public class StudentServiceImpl implements StudentService{
     public void deleteById(int id) {
     }
 
+    @Override
+    public Student findStudentById(long id) {
+        return studentDao.findStudentById(id);
+    }
 
     @Override
-    public Student findStudentById(Long id) {
-        return studentDao.findStudentById(id);
+    public void updateStudent(long id ,Student student) {
+        Student s=studentDao.findStudentById(id);
+        s.setAddress(student.getAddress());
+        s.setName(student.getName());
+        studentDao.saveAndFlush(s);
     }
 }
