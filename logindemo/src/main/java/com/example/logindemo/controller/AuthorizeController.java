@@ -3,8 +3,9 @@ package com.example.logindemo.controller;
 
 import com.example.logindemo.dto.AccessTokenDTO;
 import com.example.logindemo.dto.GithubUser;
+import com.example.logindemo.entity.User;
 import com.example.logindemo.provider.GithubProvider;
-import okhttp3.*;
+import com.example.logindemo.service.UserAuthorizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -34,6 +36,9 @@ public class AuthorizeController {
     @Value("${github.redirect.url}")
     private String githubRedirectUrl;
 
+    @Autowired
+    UserAuthorizeService userAuthorizeService;
+
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code") String code,
                            @RequestParam(name = "state") String state,
@@ -47,16 +52,25 @@ public class AuthorizeController {
         String accessToken=githubProvider.getAccessToken(accessTokenDTO);
 
         GithubUser githubUser=githubProvider.getUser(accessToken);
-        if(githubUser!=null){
+        //If user have already registered before, we should not insert again, we just need to update
+        Optional<User> user=userAuthorizeService.findUserByAccountId(String.valueOf(githubUser.getId()));
 
-            httpServletResponse.addCookie(new Cookie("token",""));
+        if(user.isPresent()){
+            httpServletResponse.addCookie(new Cookie("token",user.get().getToken()));
+        }else{
+            User nuser= new User();
+            String token=UUID.randomUUID().toString();
+            nuser.setToken(token);
+            nuser.setName(githubUser.getName());
+            nuser.setAccountId(String.valueOf(githubUser.getId()));
+            nuser.setGmtCreate(System.currentTimeMillis());
+            nuser.setGmtModified(nuser.getGmtCreate());
+            nuser.setAvatarUrl(githubUser.getAvatar_url());
+            userAuthorizeService.insert(nuser);
+            httpServletResponse.addCookie(new Cookie("token",token));
 
-            //add cookie
-
-            return "redirect:/";
-        } else {
-            return "redirect:/";
         }
+        return "redirect:/";
 
     }
 }

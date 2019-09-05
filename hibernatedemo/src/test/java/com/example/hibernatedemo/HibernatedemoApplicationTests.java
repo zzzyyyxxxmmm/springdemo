@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.sql.*;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class HibernatedemoApplicationTests {
@@ -18,6 +20,20 @@ public class HibernatedemoApplicationTests {
 
     @Autowired
     StudentServiceImpl studentServiceImpl;
+
+    @Test
+    public void testJDBC() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/test?serverTimezone=UTC","root","root");
+        Statement statement=connection.createStatement(ResultSet.TYPE_FORWARD_ONLY,ResultSet.CONCUR_UPDATABLE);
+        ResultSet resultSet=statement.executeQuery("select * from student");
+        while(resultSet.next()){
+            String name=resultSet.getString("name");
+            resultSet.updateString("name","wang");
+            resultSet.updateRow();
+        }
+        connection.close();
+    }
 
     @Test
     public void addStudent(){

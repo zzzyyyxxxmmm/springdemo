@@ -1,2 +1,5 @@
+*.properties
 .idea/
 .DS_Store
+.mvn
+.mvn

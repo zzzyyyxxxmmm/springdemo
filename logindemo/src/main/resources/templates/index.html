@@ -9,44 +9,6 @@
 
 <div class="container-fluid main">
 
-    <h2>Department Table:</h2>
-    <div class="row col-md-7 table-responsive">
-        <table id="customerTable" class="table">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Size</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="dep: ${department}">
-                <td th:text="${dep.name}">1</td>
-                <td th:text="${dep.size}">Jack</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-<hr>
-    <h2>Employee Table</h2>
-    <div class="row col-md-7 table-responsive">
-        <table id="customerTabl" class="table">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Age</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="emp: ${employee}">
-                <td th:text="${emp.name}">1</td>
-                <td th:text="${emp.age}">Jack</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-
 </div>
 
 </div>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/getAuthCode" method="post">
+    <input name="tel" type="number" placeholder="phone number">
+    <button>click to get code</button>
+    <a th:text="${code}"></a>
+</form>
+
+<hr>
+
+<form action="/verifyAuthCode" method="post">
+    <input name="codetel" type="number" placeholder="phone number">
+    <input name="code" type="number" placeholder="code">
+    <button>Verify</button>
+    <div th:if="${result}">
+        <h1 th:text="success"></h1>
+    </div>
+
+</form>
+<form>
+
+</form>
+</body>
+</html>
