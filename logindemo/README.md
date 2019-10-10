@@ -52,8 +52,24 @@ server则会findUserByToken，来拿到用户信息
 
 这个其实就是基于session的管理方式
 
+# 分布式单点登录
+[使用redis存储session](!https://blog.csdn.net/woaigaolaoshi/article/details/50902010)
 
+# CAS
+[CAS使用图](!https://blog.csdn.net/luo3_3qin/article/details/81116732)
 
+# JWT
+[JWT的优势和缺点](!https://juejin.im/post/5a437441f265da43294e54c3)
+
+# 总结
+
+对于小型网站,cookie+session足矣
+
+对于多server的小型网站, 选择JWT
+
+对于大型网站,多server,选择CAS
+
+对于超大型网站, 多server, 选择redis + CAS
 
 
 

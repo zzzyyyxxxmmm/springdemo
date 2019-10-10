@@ -1,5 +1,6 @@
 package com.wjk.springmvc.controller;
 
+import com.wjk.common.CommonResult;
 import com.wjk.hibernatedemo.entity.Student;
 import com.wjk.hibernatedemo.service.StudentService;
 import io.swagger.annotations.Api;
@@ -23,13 +24,21 @@ public class StudentController {
 
     @ApiOperation(value = "gets all students")
     @GetMapping("/student")
-    public List<Student> getStudents() {
-        return studentService.getAll();
+    public CommonResult getStudents() {
+        List<Student> list=studentService.getAll();
+        if(list==null){
+            return CommonResult.failed();
+        }
+        return CommonResult.success(list);
     }
 
     @GetMapping(value = "/student/{sid}")
-    public Student getStudentById(@PathVariable("sid") long id) {
-        return studentService.findStudentById(id);
+    public CommonResult getStudentById(@PathVariable("sid") long id) {
+        Student student=studentService.findStudentById(id);
+        if(student==null){
+            return CommonResult.failed();
+        }
+        return CommonResult.success(student);
     }
 
     @PostMapping(value = "/student", consumes = "application/json")

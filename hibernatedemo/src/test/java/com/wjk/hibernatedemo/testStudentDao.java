@@ -1,6 +1,6 @@
 package com.wjk.hibernatedemo;
 
-import com.wjk.hibernatedemo.service.CourseService;
+import com.wjk.hibernatedemo.dao.StudentDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +12,12 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class testSC {
+public class testStudentDao {
 
     @Autowired
-    CourseService courseService;
+    StudentDao studentDao;
     @Test
-    public void getAllCoursesByStudentName(){
-        System.out.println("*****"+courseService.getCoursesByStudentName("wang").size());
-
+    public void test(){
+        //System.out.println(studentDao.findStudentByCount(90));
     }
 }

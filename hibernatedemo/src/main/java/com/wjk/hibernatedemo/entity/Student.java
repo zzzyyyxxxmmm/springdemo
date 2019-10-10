@@ -1,7 +1,5 @@
 package com.wjk.hibernatedemo.entity;
 
-import lombok.ToString;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,37 +8,24 @@ import java.util.Set;
  * @author jikangwang
  */
 @Entity
-@ToString(exclude = "courses")
-@Table(name="student")
+@Table(name = "student")
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "st_id")
     private Long id;
+
+    @Column(name = "st_name")
     private String name;
 
-    private Address address;
+    @OneToMany(mappedBy = "student")
+    Set<Schedule> schedules=new HashSet<>();
 
-    @Embedded
-    @AttributeOverrides({
-                    @AttributeOverride(
-                            name = "address",
-                            column = @Column(name = "bill_address")
-                    )
-            })
-    private Address billAddress;
-
-    @ManyToMany(fetch = FetchType.EAGER,cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "sc",
-            joinColumns = { @JoinColumn(name = "student_id") },
-            inverseJoinColumns = { @JoinColumn(name = "course_id") }
-    )
-    Set<Course> courses=new HashSet<>();
-
-    public Student() {
+    public String getName() {
+        return name;
     }
 
-    public Student(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 }

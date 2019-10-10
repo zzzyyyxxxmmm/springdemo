@@ -16,6 +16,7 @@
         <module>redisdemo</module>
         <module>springmvc</module>
         <module>dependencies</module>
+        <module>common</module>
     </modules>
 
     

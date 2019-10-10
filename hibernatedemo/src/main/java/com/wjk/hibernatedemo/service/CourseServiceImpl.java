@@ -30,12 +30,13 @@ public class CourseServiceImpl implements CourseService{
 
     @Override
     public Set<Course> getCoursesByStudentName(String name) {
-        return courseDao.findCoursesByStudentName(name);
+        return null;
     }
 
     @Override
     public Course findCourseById(Long id) {
-        return courseDao.findCourse(id);
-        //return courseDao.findCourseById(id);
+        return null;
     }
+
+
 }

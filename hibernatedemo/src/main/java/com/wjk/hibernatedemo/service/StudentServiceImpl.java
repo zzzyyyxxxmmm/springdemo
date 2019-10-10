@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -31,13 +29,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public List<Student> getAll() {
-        Iterable<Student> students = studentDao.findAll();
-        Iterator<Student> iter = students.iterator();
-        List<Student> res = new ArrayList<>();
-        while(iter.hasNext()) {
-            res.add(iter.next());
-        }
-        return res;
+        return studentDao.findAll();
     }
 
     @Override
