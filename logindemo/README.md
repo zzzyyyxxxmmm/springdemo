@@ -6,7 +6,7 @@
 2. cookie-base的管理方式
 3. token-base的管理方式
 
-[Details](!https://www.cnblogs.com/lyzg/p/6067766.html)
+[Details](https://www.cnblogs.com/lyzg/p/6067766.html)
 
 # OAuth2.0
 The OAuth 2.0 authorization framework enables third-party applications to obtain limited access to a web service.
@@ -19,7 +19,7 @@ The OAuth 2.0 authorization framework enables third-party applications to obtain
 
 单点登录就是一次登录，可以使用内部所有资源
 
-[介绍](!http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
+[介绍](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
 
 先简要描述一下OAuth登录过程
 1. 首先client向oauth layer发送请求，表示其想要获得登录权限，这个请求会打开server对应的oauth页面进行登录
@@ -35,7 +35,7 @@ Q: 为什么不在第二步直接发送token呢？
 
 ## Github OAuth
 
-用github登录试试看：[ref](!https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/)
+用github登录试试看：[ref](https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/)
 
 1. GET ```https://github.com/login/oauth/authorize?client_id=***&redirect_uri=***```
 2. 拿到code
@@ -53,13 +53,13 @@ server则会findUserByToken，来拿到用户信息
 这个其实就是基于session的管理方式
 
 # 分布式单点登录
-[使用redis存储session](!https://blog.csdn.net/woaigaolaoshi/article/details/50902010)
+[使用redis存储session](https://blog.csdn.net/woaigaolaoshi/article/details/50902010)
 
 # CAS
-[CAS使用图](!https://blog.csdn.net/luo3_3qin/article/details/81116732)
+[CAS使用图](https://blog.csdn.net/luo3_3qin/article/details/81116732)
 
 # JWT
-[JWT的优势和缺点](!https://juejin.im/post/5a437441f265da43294e54c3)
+[JWT的优势和缺点](https://juejin.im/post/5a437441f265da43294e54c3)
 
 # 总结
 
